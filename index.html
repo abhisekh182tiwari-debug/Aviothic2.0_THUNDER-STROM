@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>smart-student-scheduler</title>
+<style>
+    body {
+        font-family:arial, italic;
+        background: #dbcade;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        width: 360px;
+        background:#90ee90 ;
+        border-radius: 11px;
+        box-shadow: 0 0 10px rgba(0,1,0,0.3);
+        padding: 22px;
+    }
+
+    .button-box {
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    .toggle-btn {
+        background: #9dbad1;
+        color: white;
+        border: none;
+        padding: 10px 23px;
+        cursor: pointer;
+        border-radius: 30px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .input-field {
+        padding: 10px;
+        border:21px solid #ccc;
+        border-radius: 5px;
+    }
+  
+  .submit-btn {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .extra-fields {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .extra-fields input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="form-box">
+        <div class="button-box" id="buttonBox">
+            <button type="button" class="toggle-btn">Sign In</button>
+        </div>
+<!--login area-->
+        <form id="login" class="input-group">
+            <input type="text" class="input-field" placeholder="Enter Gmail" required>
+            <input type="password" class="input-field" placeholder="Enter Password please" required>
+            <label><input type="checkbox" class="check-box"> Remember your Password</label>
+          <!--submit area-->
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+
+        <!-- Hidden fields appear after login -->
+        <form id="extraFields" class="extra-fields">
+            <input type="text" placeholder="Enter Name" required>
+            <input type="text" placeholder="Enter Branch" required>
+          <!--marks area-->
+            <input type="number" id="cgpa" placeholder="Enter CGPA (6, 7, or 8)" required>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <div id="errorMessage" class="error-message">❌ Please enter CGPA as 6, 7, or 8 only.</div>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('login');
+    const extraFields = document.getElementById('extraFields');
+    const buttonBox = document.getElementById('buttonBox');
+    const errorMessage = document.getElementById('errorMessage');
+    const cgpaInput = document.getElementById('cgpa');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Hide login and show next form
+        form.style.display = 'none';
+        buttonBox.style.display = 'none';
+        extraFields.style.display = 'flex';
+    });
+
+    extraFields.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const cgpa = parseInt(cgpaInput.value);
+
+        // Check valid CGPA
+        if (cgpa === 6) {
+            window.open("WhatsApp Image 2025-10-15 at 12.37.19_c11c0d36.jpg", "_blank"); // Replace with your real link
+        } 
+        else if (cgpa=== 7) {
+            window.open("WhatsApp Image 2025-10-15 at 12.57.24_d63599b1.jpg", "_blank");
+        } 
+        else if (cgpa === 8) {
+            window.open("WhatsApp Image 2025-10-15 at 13.06.42_7021cb65.jpg", "_blank");
+        } 
+        else {
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        // Hide error and form when success
+        errorMessage.style.display = 'none';
+        extraFields.reset();
+    });
+</script>
+
+</body>
+</html>
